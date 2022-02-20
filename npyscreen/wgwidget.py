@@ -147,23 +147,28 @@ but in most cases the add_handers or add_complex_handlers methods are what you w
         """Called when user leaves the widget to the next widget"""
         self.editing = False
         self.how_exited = EXITED_DOWN
+        self.eventExit()
         
     def h_exit_right(self, _input):
         self.editing = False
         self.how_exited = EXITED_RIGHT
+        self.eventExit()
 
     def h_exit_up(self, _input):
         """Called when the user leaves the widget to the previous widget"""
         self.editing = False
         self.how_exited = EXITED_UP
+        self.eventExit()
         
     def h_exit_left(self, _input):
         self.editing = False
         self.how_exited = EXITED_LEFT
+        self.eventExit()
         
     def h_exit_escape(self, _input):
         self.editing = False
         self.how_exited = EXITED_ESCAPE
+        self.eventExit()
 
     def h_exit_mouse(self, _input):
         mouse_event = self.parent.safe_get_mouse_event()
@@ -176,7 +181,12 @@ but in most cases the add_handers or add_complex_handlers methods are what you w
                 assert ch == curses.KEY_MOUSE
             self.editing = False
             self.how_exited = EXITED_MOUSE
-    
+        self.eventExit()
+
+###
+# Event handling
+    def eventExit(self):
+        pass
 
 
 
