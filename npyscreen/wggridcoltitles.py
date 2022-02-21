@@ -27,6 +27,8 @@ class GridColTitles(grid.SimpleGrid):
         
         _title_counter = 0
         for title_cell in self._my_col_titles:
+            title_cell.show_bold = True
+            title_cell.color = "IMPORTANT"
             try:
                 title_text = self.col_titles[self.begin_col_display_at+_title_counter]
             except IndexError:
@@ -37,6 +39,7 @@ class GridColTitles(grid.SimpleGrid):
         self.parent.curses_pad.hline(self.rely+1, self.relx, curses.ACS_HLINE, self.width)
     
     def update_title_cell(self, cell, cell_title):
+        cell.highlight = self.editing
         cell.value = cell_title
         cell.update()
         
