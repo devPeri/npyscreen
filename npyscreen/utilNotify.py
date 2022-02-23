@@ -1,8 +1,10 @@
 from . import fmPopup
 from . import wgmultiline
+from . import wgtextbox
 from . import fmPopup
 import curses
 import textwrap
+from npyscreen import wgeditmultiline
 
 class ConfirmCancelPopup(fmPopup.ActionPopup):
     def on_ok(self):
@@ -106,7 +108,7 @@ def notify_yes_no(message, title="Message", form_color='STANDOUT', wrap=True, ed
     F.edit()
     return F.value
 
-def single_line_input(default_value="Input Text", title="Message", form_color='STANDOUT'):
+def single_line_input(default_value="Input Text", title="Message", form_color='STANDOUT', *args, **keywords):
     ''' Convenience function for requesting a single line of user input
 
     Args:
@@ -119,9 +121,21 @@ def single_line_input(default_value="Input Text", title="Message", form_color='S
              - Value of the text input field if the user pressed "OK"
     '''
 
-    F = ConfirmCancelPopup(name=title, color=form_color)
+    F = ConfirmCancelPopup(name=title, color=form_color, *args, **keywords)
     F.preserve_selected_widget = True
-    tf = F.add(npyscreen.Textfield)
+    tf = F.add(wgtextbox.Textfield)
+    tf.width = tf.width - 1
+    tf.value = default_value
+    F.edit()
+    if F.value is True:
+        return tf.value
+    else:
+        return None
+
+def multi_line_input(default_value="Input Text", title="Message", form_color='STANDOUT', *args, **keywords):
+    F = ConfirmCancelPopup(name=title, color=form_color, *args, **keywords)
+    F.preserve_selected_widget = True
+    tf = F.add(wgeditmultiline.MultiLineEdit)
     tf.width = tf.width - 1
     tf.value = default_value
     F.edit()
