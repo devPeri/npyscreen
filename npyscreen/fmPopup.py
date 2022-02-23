@@ -32,7 +32,7 @@ class PopupWide(Popup):
     SHOW_ATY           = 0
         
 class ActionPopupWide(fmActionFormV2.ActionFormV2):
-    DEFAULT_LINES      = 14
-    DEFAULT_COLUMNS    = None
-    SHOW_ATX           = 0
-    SHOW_ATY           = 0
+    DEFAULT_LINES      = -1
+    DEFAULT_COLUMNS    = -1
+    SHOW_ATX           = 1
+    SHOW_ATY           = 1
