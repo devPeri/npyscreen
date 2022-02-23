@@ -35,7 +35,7 @@ class ScreenArea(object):
     DEFAULT_COLUMNS    = 0
     SHOW_ATX           = 0
     SHOW_ATY           = 0
-    
+
     """A screen area that can be safely resized.  But this is a low-level class, not the
     object you are looking for."""
 
@@ -64,7 +64,7 @@ class ScreenArea(object):
 
         # Panels can be bigger than the screen area. These two variables
         # set which bit of the panel should be visible.
-        # ie. They are about the virtual, not the physical, screen.
+        # i.e. They are about the virtual, not the physical, screen.
         self.show_from_y = 0
         self.show_from_x = 0
         self.show_atx = show_atx or self.__class__.SHOW_ATX
@@ -83,7 +83,7 @@ class ScreenArea(object):
         self._create_screen()
 
     def _create_screen(self):
-    
+
         try:
             if self.lines_were_auto_set: self.lines = None
             if self.cols_were_auto_set: self.columns = None
@@ -132,13 +132,13 @@ class ScreenArea(object):
         #mxy, mxx = self.lines, self.columns-1
         mxy, mxx = self.useable_space(rely=rely, relx=relx)
         return (mxy-self.BLANK_LINES_BASE, mxx-self.BLANK_COLUMNS_RIGHT)
-    
+
     def refresh(self):
         pmfuncs.hide_cursor()
         _my, _mx = self._max_physical()
         self.curses_pad.move(0,0)
         
-        # Since we can have pannels larger than the screen
+        # Since we can have panels larger than the screen
         # let's allow for scrolling them
         
         # Getting strange errors on OS X, with curses sometimes crashing at this point. 
@@ -155,7 +155,7 @@ class ScreenArea(object):
 
         else:
             self.ALL_SHOWN = False
-    
+
     def erase(self):
         self.curses_pad.erase()
         self.refresh()
