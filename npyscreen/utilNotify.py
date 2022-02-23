@@ -10,10 +10,24 @@ class ConfirmCancelPopup(fmPopup.ActionPopup):
     def on_cancel(self):
         self.value = False
 
+class ConfirmCancelPopupWide(fmPopup.ActionPopupWide):
+    def on_ok(self):
+        self.value = True
+    def on_cancel(self):
+        self.value = False
+
 class YesNoPopup(ConfirmCancelPopup):
     OK_BUTTON_TEXT = "Yes"
     CANCEL_BUTTON_TEXT = "No"
-    
+
+class ReturnPopup(fmPopup.ActionPopup):
+    OK_BUTTON_TEXT = "Return"
+    CANCELBUTTON_TYPE = None
+
+class ReturnPopupWide(fmPopup.ActionPopupWide):
+    OK_BUTTON_TEXT = "Return"
+    CANCELBUTTON_TYPE = None
+
 def _prepare_message(message):
     if isinstance(message, list) or isinstance(message, tuple):
         return "\n".join([ s.rstrip() for s in message])
