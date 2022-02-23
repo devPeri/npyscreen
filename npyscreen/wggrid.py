@@ -245,7 +245,9 @@ Should accept one argument (the object to be represented), and return a string."
     def h_move_line_up(self, inpt):
         if self.edit_cell[0] > 0:
             self.edit_cell[0] -= 1
-            
+        else:
+            self.h_exit_up(inpt)
+
         if self.edit_cell[0] < self.begin_row_display_at:
             self.h_scroll_display_up(inpt)
 
