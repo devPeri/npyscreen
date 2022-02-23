@@ -288,4 +288,5 @@ Should accept one argument (the object to be represented), and return a string."
     def h_exit(self, ch):
         self.editing = False
         self.how_exited = True
+        self.eventExit()
 
