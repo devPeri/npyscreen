@@ -49,9 +49,15 @@ class ScreenArea(object):
         
     # Putting a default in here will override the system in _create_screen. For testing?
         if not lines:
-            lines = self.__class__.DEFAULT_LINES
+            if self.__class__.DEFAULT_LINES < 0:
+                lines = self._max_physical()[0] + self.__class__.DEFAULT_LINES - self.__class__.SHOW_ATY + 1
+            else:
+                lines = self.__class__.DEFAULT_LINES
         if not columns:
-            columns = self.__class__.DEFAULT_COLUMNS
+            if self.__class__.DEFAULT_COLUMNS < 0:
+                columns = self._max_physical()[1] + self.__class__.DEFAULT_COLUMNS - self.__class__.SHOW_ATX + 1
+            else:
+                columns = self.__class__.DEFAULT_COLUMNS
             
         if lines:   minimum_lines   = lines
         if columns: minimum_columns = columns
