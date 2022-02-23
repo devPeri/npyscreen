@@ -32,15 +32,16 @@ class ActionFormV2(fmForm.FormBaseNew):
                         0 - self.__class__.OK_BUTTON_BR_OFFSET[1] - len(self.__class__.OK_BUTTON_TEXT),
                         None
                         )
-                        
-        self._add_button('cancel_button', 
-                        self.__class__.CANCELBUTTON_TYPE, 
-                        self.__class__.CANCEL_BUTTON_TEXT,
-                        0 - self.__class__.CANCEL_BUTTON_BR_OFFSET[0],
-                        0 - self.__class__.CANCEL_BUTTON_BR_OFFSET[1] - len(self.__class__.CANCEL_BUTTON_TEXT),
-                        None
-                        )
-    
+
+        if self.__class__.CANCELBUTTON_TYPE:
+            self._add_button('cancel_button',
+                            self.__class__.CANCELBUTTON_TYPE,
+                            self.__class__.CANCEL_BUTTON_TEXT,
+                            0 - self.__class__.CANCEL_BUTTON_BR_OFFSET[0],
+                            0 - self.__class__.CANCEL_BUTTON_BR_OFFSET[1] - len(self.__class__.CANCEL_BUTTON_TEXT),
+                            None
+                            )
+
     def on_cancel(self):
         pass
 
