@@ -90,7 +90,9 @@ from .wgNMenuDisplay            import MenuDisplay, MenuDisplayScreen
 
 from .npyspmfuncs               import CallSubShell
 
-from .utilNotify                 import notify, notify_confirm, notify_wait, notify_ok_cancel, notify_yes_no
+from .utilNotify                import ConfirmCancelPopup, ConfirmCancelPopupWide, YesNoPopup, ReturnPopup, ReturnPopupWide
+from .utilNotify                import notify, notify_confirm, notify_wait, notify_ok_cancel, notify_yes_no
+from .utilNotify                import single_line_input, multi_line_input
 
 # Base classes for overriding:
 
