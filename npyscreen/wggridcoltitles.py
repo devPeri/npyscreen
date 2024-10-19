@@ -13,15 +13,14 @@ class GridColTitles(grid.SimpleGrid):
         else:
             self.col_titles = []
         super(GridColTitles, self).__init__(screen, *args, **keywords)
-    
+
     def make_contained_widgets(self):
         super(GridColTitles, self).make_contained_widgets()
         self._my_col_titles = []
         for title_cell in range(self.columns):
             x_offset = title_cell * (self._column_width+self.col_margin)
             self._my_col_titles.append(self._col_widgets(self.parent, rely=self.rely, relx = self.relx + x_offset, width=self._column_width, height=1))
-            
-            
+
     def update(self, clear=True):
         super(GridColTitles, self).update(clear = True)
         
@@ -42,4 +41,4 @@ class GridColTitles(grid.SimpleGrid):
         cell.highlight = self.editing
         cell.value = cell_title
         cell.update()
-        
+

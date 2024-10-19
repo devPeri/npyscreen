@@ -12,23 +12,28 @@ class ConfirmCancelPopup(fmPopup.ActionPopup):
     def on_cancel(self):
         self.value = False
 
+
 class ConfirmCancelPopupWide(fmPopup.ActionPopupWide):
     def on_ok(self):
         self.value = True
     def on_cancel(self):
         self.value = False
 
+
 class YesNoPopup(ConfirmCancelPopup):
     OK_BUTTON_TEXT = "Yes"
     CANCEL_BUTTON_TEXT = "No"
+
 
 class ReturnPopup(fmPopup.ActionPopup):
     OK_BUTTON_TEXT = "Return"
     CANCELBUTTON_TYPE = None
 
+
 class ReturnPopupWide(fmPopup.ActionPopupWide):
     OK_BUTTON_TEXT = "Return"
     CANCELBUTTON_TYPE = None
+
 
 def _prepare_message(message):
     if isinstance(message, list) or isinstance(message, tuple):
@@ -50,7 +55,7 @@ def notify(message, title="Message", form_color='STANDOUT',
     if wide:
         F = fmPopup.PopupWide(name=title, color=form_color)
     else:
-        F   = fmPopup.Popup(name=title, color=form_color)
+        F = fmPopup.Popup(name=title, color=form_color)
     F.preserve_selected_widget = True
     mlw = F.add(wgmultiline.Pager,)
     mlw_width = mlw.width-1
@@ -65,7 +70,7 @@ def notify_confirm(message, title="Message", form_color='STANDOUT', wrap=True, w
     if wide:
         F = fmPopup.PopupWide(name=title, color=form_color)
     else:
-        F   = fmPopup.Popup(name=title, color=form_color)
+        F = fmPopup.Popup(name=title, color=form_color)
     F.preserve_selected_widget = True
     mlw = F.add(wgmultiline.Pager,)
     mlw_width = mlw.width-1
@@ -84,7 +89,7 @@ def notify_wait(*args, **keywords):
 
 def notify_ok_cancel(message, title="Message", form_color='STANDOUT', wrap=True, editw = 0,):
     message = _prepare_message(message)
-    F   = ConfirmCancelPopup(name=title, color=form_color)
+    F = ConfirmCancelPopup(name=title, color=form_color)
     F.preserve_selected_widget = True
     mlw = F.add(wgmultiline.Pager,)
     mlw_width = mlw.width-1
@@ -97,7 +102,7 @@ def notify_ok_cancel(message, title="Message", form_color='STANDOUT', wrap=True,
 
 def notify_yes_no(message, title="Message", form_color='STANDOUT', wrap=True, editw = 0,):
     message = _prepare_message(message)
-    F   = YesNoPopup(name=title, color=form_color)
+    F = YesNoPopup(name=title, color=form_color)
     F.preserve_selected_widget = True
     mlw = F.add(wgmultiline.Pager,)
     mlw_width = mlw.width-1
